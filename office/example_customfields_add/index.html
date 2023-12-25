@@ -34,9 +34,17 @@
 		<script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js"></script>
 		<link rel="stylesheet" href="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css">
     	<script type="text/javascript" src="scripts/code.js"></script>
+		<script type="text/javascript">
+			$('#select_example').select2({
+			    data : [{id:0, text:'单行输入框'}, {id:1, text:'多行输入框'}, {id:2, text:'下拉框'}],
+			    minimumResultsForSearch: Infinity,
+			    width : '120px'
+			});
+		</script>
     </head>
     <body>
 		<div style="margin: 0px 5px; padding: 0px; width:calc(100% - 10px); box-sizing: border-box;">
+			<select id="select_example" class="" ></select>
 			<input id="inputTextFieldQ" style="tab-size: 2; margin: 2px 0px; padding: 0px; width:calc(100% - 10px);" placeholder="Type question here"></input>
 			<input id="inputTextFieldL" style="tab-size: 2; margin: 2px 0px; padding: 0px; width:calc(100% - 10px);" placeholder="Type label here"></input>
 			<button id="buttonAddTextField" class="btn-text-default" style="margin-left: calc(50% - 100px); width:200px;">Add simple field</button>
