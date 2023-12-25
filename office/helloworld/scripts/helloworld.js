@@ -57,7 +57,7 @@
                     var oDocument = Api.GetDocument();
                     var oParagraph = Api.CreateParagraph();
                     oParagraph.AddText(Asc.scope.text); // or oParagraph.AddText(scope.text);
-                    oDocument.InsertContent([oParagraph]);
+                    oDocument.InsertContent([oParagraph]);                   
                 }, true);
                 break;
             }
@@ -68,10 +68,6 @@
 
     window.Asc.plugin.button = function(id)
     {
-        console.log("id:"+id);
-        if (id === -1) {
-            this.executeCommand('close', '')
-        }
-    };
 
+    };
 })(window, undefined);
