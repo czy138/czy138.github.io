@@ -30,23 +30,21 @@
 			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-		<script src="scripts/select2-4.0.6-rc.1/dist/js/select2.js"></script>
 		<script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js"></script>
 		<script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js"></script>
 		<link rel="stylesheet" href="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css">
-		<script type="text/javascript">
-			$('#select_example').select2({
-			    data : [{id:0, text:'单行输入框'}, {id:1, text:'多行输入框'}, {id:2, text:'下拉框'}],
-			    minimumResultsForSearch: Infinity,
-			    width : '120px'
-			});
-		</script>
     	<script type="text/javascript" src="scripts/code.js"></script>
 
     </head>
     <body>
 		<div style="margin: 0px 5px; padding: 0px; width:calc(100% - 10px); box-sizing: border-box;">
-			<div>控件类型：<select id="select_example"></select></div>
+			<div>控件类型：
+				<select id="select_example">
+					<option>单行输入框</option>
+					<option>多行输入框</option>
+					<option>下拉框</option>
+				</select>
+			</div>
 			占位符：<input id="inputTextFieldQ" style="tab-size: 2; margin: 2px 0px; padding: 0px; width:calc(100% - 10px);"></input>
 			标题：<input id="inputTextFieldL" style="tab-size: 2; margin: 2px 0px; padding: 0px; width:calc(100% - 10px);"></input>
 			是否必填： <input id="inputTextFieldR" type="checkbox" style="margin: 2px 0px; padding: 0px; width:calc(100% - 10px);"></input>
