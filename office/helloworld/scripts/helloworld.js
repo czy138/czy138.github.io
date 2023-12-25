@@ -68,6 +68,10 @@
 
     window.Asc.plugin.button = function(id)
     {
+        console.log("id:"+id);
+        if (id === -1) {
+            this.executeCommand('close', '')
+        }
     };
 
 })(window, undefined);
