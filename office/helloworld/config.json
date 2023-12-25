@@ -15,7 +15,12 @@
             "initDataType"        : "none",
             "initData"            : "",
             "isUpdateOleOnResize" : true,
-            "buttons"             : [],
+            "buttons"             : [
+                {
+                    "text": "Ok",
+                    "primary": true
+                }
+            ],
             "events" : [
                 "onClick"
             ]
