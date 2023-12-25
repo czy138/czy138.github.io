@@ -29,7 +29,8 @@
 				height:100%;
 			}
 		</style>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="scripts/select2-4.0.6-rc.1/dist/js/select2.js"></script>
 		<script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js"></script>
 		<script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js"></script>
 		<link rel="stylesheet" href="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css">
@@ -45,7 +46,7 @@
     </head>
     <body>
 		<div style="margin: 0px 5px; padding: 0px; width:calc(100% - 10px); box-sizing: border-box;">
-			控件类型：<select id="select_example" class="" ></select><br>
+			<div>控件类型：<select id="select_example"></select></div>
 			占位符：<input id="inputTextFieldQ" style="tab-size: 2; margin: 2px 0px; padding: 0px; width:calc(100% - 10px);"></input>
 			标题：<input id="inputTextFieldL" style="tab-size: 2; margin: 2px 0px; padding: 0px; width:calc(100% - 10px);"></input>
 			是否必填： <input id="inputTextFieldR" type="checkbox" style="margin: 2px 0px; padding: 0px; width:calc(100% - 10px);"></input>
