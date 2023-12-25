@@ -99,65 +99,7 @@
 			document.getElementById("inputTextFieldQ").value = "";
 		};
 		
-		document.getElementById("buttonAddDropDownField").onclick = function()
-		{
-			if (_Control)
-				return;
-
-			var _question = document.getElementById("inputDropDownQ").value;
-			var _label    = document.getElementById("inputDropDownL").value;
-			
-			if (!_question || !_label)
-				return;
-			
-			var _items = [];
-			var _select = document.getElementById("selectDropDown");
-			for (var index = 0, count = _select.childNodes.length; index < count; ++index)
-			{
-				if (_select.childNodes[index] && _select.childNodes[index].nodeName.toLowerCase() === "option")
-					_items.push(_select.childNodes[index].innerHTML);
-			}
-
-			_Control = {
-				Type     : 2,
-				Question : _question,
-				Label    : _label,
-				Items    : _items
-			};
-
-			privateCreateInlineControl();
-
-			document.getElementById("inputDropDownL").value = "";
-			document.getElementById("inputDropDownQ").value = "";
-			
-			while (_select.firstChild)
-			{
-				_select.removeChild(_select.firstChild);
-			}
-		};
-		
-		document.getElementById("buttonDropDownAddItem").onclick = function()
-		{
-			var _item = document.getElementById("inputDropDownItem").value;
-			if (!_item)
-				return;
-			
-			var _select = document.getElementById("selectDropDown");
-			var _option = document.createElement("option");
-			_option.innerHTML = _item;
-			_select.appendChild(_option);
-			
-			document.getElementById("inputDropDownItem").value = "";
-		};
-		
-		document.getElementById("buttonDropDownRemoveItem").onclick = function()
-		{
-			var _select = document.getElementById("selectDropDown");
-			var _selectedIndex = _select.selectedIndex;
-			
-			if (_select.childNodes[_selectedIndex])
-				_select.removeChild(_select.childNodes[_selectedIndex]);
-		};
+	
     };
 
 	window.Asc.plugin.onMethodReturn = function(returnValue)
