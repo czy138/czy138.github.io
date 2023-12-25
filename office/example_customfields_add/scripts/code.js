@@ -17,86 +17,22 @@
  */
 (function(window, undefined){
 
-	function privateCreateInlineControl()
-	{
-		window.Asc.plugin.executeMethod("AddContentControl", [2, {"Lock" : 3}]);
-	}
-
-	function privateCreateScript(Tag, Label, isTextField, InternalId)
-	{
-		//creating script for inserting custom fields
-		var _script = "\r\n\
-			var oDocument = Api.GetDocument();\r\n\
-			var oParagraph = Api.CreateParagraph();\r\n\
-			var oRun = oParagraph.AddText(\'" + Label + "\');\r\n\
-			oRun.SetColor(255,255,255);\r\n\
-			oRun.SetShd(\"clear\"," + (isTextField ? "0, 0, 255" : "255, 0, 0" ) + ");\r\n\
-			oDocument.InsertContent([oParagraph], true);\r\n\
-			";
-
-		_script = _script.replaceAll("\r\n", "");
-		_script = _script.replaceAll("\n", "");
-		
-		var _scriptObject = {
-			"Props" : {
-				"Tag"        : Tag,
-				"Lock"       : 0,
-				"InternalId" : InternalId
-			},
-			"Script" : _script
-		};
-		
-		return _scriptObject;
-	}
-	
-	function privateEncodeTextField(question)
-	{
-		return "q;" + question;
-	}
-	
-	function privateEncodeDropDownField(question, items)
-	{
-		var _result = "d;" + question;
-		
-		for (var index = 0, count = items.length; index < count; ++index)
-		{
-			_result += ";" + items[index];
-		}
-		
-		return _result;
-	}
-
-	String.prototype.replaceAll = function(search, replacement) {
-		var target = this;
-		return target.replace(new RegExp(search, 'g'), replacement);
-	};
-
-	var _Control = null;
-
     window.Asc.plugin.init = function()
     {
 		//event "init" for plugin
-		document.getElementById("buttonAddTextField").onclick = function()
+		document.getElementById("buttonAddFeild").onclick = function()
 		{
-			if (_Control)
-				return;
-
-			var _question = document.getElementById("inputTextFieldQ").value;
-			var _label    = document.getElementById("inputTextFieldL").value;
-			
-			if (!_question || !_label)
-				return;
-
-			_Control = {
-				Type     : 1,
-				Question : _question,
-				Label    : _label
+			var formData = {
+				type: document.getElementById('type').value,
+				name: document.getElementById('name').value,
+				title: document.getElementById('title').value,
+				required: document.getElementById('required').checked,
+				tip: document.getElementById('tip').value
 			};
-
-			privateCreateInlineControl();
-			
-			document.getElementById("inputTextFieldL").value = "";
-			document.getElementById("inputTextFieldQ").value = "";
+	
+			// Convert to JSON
+			var jsonData = JSON.stringify(formData);
+			console.log(jsonData);
 		};
 		
 	
@@ -108,25 +44,7 @@
 		var _plugin = window.Asc.plugin;
 		if (_plugin.info.methodName == "AddContentControl")
 		{
-			if (!returnValue)
-			{
-				console.warn("Content control not inserted");
-			}
-			else if (_Control)
-			{
-				if (1 === _Control.Type)
-				{
-					var _obj = privateCreateScript(privateEncodeTextField(_Control.Question), _Control.Label, true, returnValue.InternalId);
-					window.Asc.plugin.executeMethod("InsertAndReplaceContentControls", [[_obj]]);
-				}
-				else if (2 === _Control.Type)
-				{
-					var _obj = privateCreateScript(privateEncodeDropDownField(_Control.Question, _Control.Items), _Control.Label, false, returnValue.InternalId);
-					window.Asc.plugin.executeMethod("InsertAndReplaceContentControls", [[_obj]]);
-				}
 
-				_Control = null;
-			}
 		}
 	};
 
